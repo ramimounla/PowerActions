@@ -22,8 +22,8 @@ jobs:
     - name: Pack solution
       uses: microsoft/powerplatform-actions/pack-solution@v0
       with:
-        solution-folder: solutions/DevOpsSol
-        solution-file: out/solutions/DevOpsSol.zip
+        solution-folder: solutions/sampleSol
+        solution-file: out/solutions/sampleSol.zip
         solution-type: Unmanaged
 
     - name: Import solution as unmanaged to build env
@@ -32,7 +32,7 @@ jobs:
         environment-url: 'https://powerfriday.crm6.dynamics.com/'
         user-name: 'ramim@powerfriday.onmicrosoft.com'
         password-secret: ${{ secrets.password }}
-        solution-file: out/solutions/DevOpsSol.zip
+        solution-file: out/solutions/sampleSol.zip
         force-overwrite: true
         publish-changes: true
 
@@ -42,15 +42,15 @@ jobs:
         environment-url: 'https://powerfriday.crm6.dynamics.com/'
         user-name: 'ramim@powerfriday.onmicrosoft.com'
         password-secret: ${{ secrets.password }}
-        solution-name: DevOpsSol
+        solution-name: sampleSol
         managed: true
-        solution-output-file: out/ship/DevOpsSol.zip
+        solution-output-file: out/ship/sampleSol.zip
 
     - name: Upload the ready to ship solution to GH artifact store
       uses: actions/upload-artifact@v2
       with:
         name: managedSolutions
-        path: out/ship/DevOpsSol.zip
+        path: out/ship/sampleSol.zip
 
   release-to-staging:
     needs: [ convert-to-managed ]
@@ -77,6 +77,6 @@ jobs:
         environment-url: 'https://nz18.crm.dynamics.com/'
         user-name: 'ramim@nz18.onmicrosoft.com'
         password-secret: ${{ secrets.password }}
-        solution-file: out/release/DevOpsSol.zip
+        solution-file: out/release/sampleSol.zip
         force-overwrite: true
         publish-changes: true
