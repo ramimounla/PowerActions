@@ -29,21 +29,21 @@ jobs:
         environment-url: 'https://powerfriday.crm6.dynamics.com/'
         user-name: 'ramim@powerfriday.onmicrosoft.com'
         password-secret: ${{ secrets.password }}
-        solution-name: DevOpsSolution
-        solution-output-file: out/exported/DevOpsSol.zip
+        solution-name: sampleSol
+        solution-output-file: out/exported/sampleSol.zip
 
     - name: unpack-solution action
       uses: microsoft/powerplatform-actions/unpack-solution@v0
       with:
-        solution-file: out/exported/DevOpsSol.zip
-        solution-folder: out/solutions/DevOpsSol
+        solution-file: out/exported/sampleSol.zip
+        solution-folder: out/solutions/sampleSol
         solution-type: 'Unmanaged'
         overwrite-files: true
 
     - name: branch-solution, prepare it for a PullRequest
       uses: microsoft/powerplatform-actions/branch-solution@v0
       with:
-        solution-folder: out/solutions/DevOpsSol
-        solution-target-folder: solutions/DevOpsSol
+        solution-folder: out/solutions/sampleSol
+        solution-target-folder: solutions/sampleSol
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         allow-empty-commit: true
