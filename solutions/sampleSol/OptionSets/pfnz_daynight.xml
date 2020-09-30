@@ -11,6 +11,11 @@
     <Description description="" languagecode="1033" />
   </Descriptions>
   <options>
+    <option value="496170000">
+      <labels>
+        <label description="Night" languagecode="1033" />
+      </labels>
+    </option>
     <option value="176240000">
       <labels>
         <label description="Day" languagecode="1033" />
